@@ -95,62 +95,73 @@ function DisplayData() {
     const selectedItem = data.find((item) => item.id === viewItemId);
 
     return (
-      <div>
-        <h1>Details</h1>
+      <div style={{border:"2px solid teal",margin:"auto",display:"block",width:"40%",height:"auto",}}>
+        <h1>Car Details</h1>
         <p>Title: {selectedItem.title}</p>
         <p>Price: {selectedItem.price}</p>
         <p>Mileage: {selectedItem.mileage}</p>
         <p>Color: {selectedItem.color}</p>
-        <p>Image: {selectedItem.image}</p>
+        <img src={selectedItem.image} alt={selectedItem.title} style={{ width: "200px", height: "auto" }} />
         <p>Bullet Points:</p>
-        <ul>
+        <ol style={{textAlign:"left",margin:"auto",display:"block",}}>
           {selectedItem.bulletPoints.map((point, index) => (
-            <li key={index}>{point}</li>
+            <li key={index} style={{}} >{point}</li>
           ))}
-        </ul>
+        </ol>
         <button onClick={handleGoBack}>Go Back</button>
       </div>
     );
   }
 
   return (
-    <div>
-      <h1>Display Data</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Mileage</th>
-            <th>Color</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{editItemId === item.id ? <input type="text" value={editedTitle} onChange={(e) => setEditedTitle(e.target.value)} /> : item.title}</td>
-              <td>{editItemId === item.id ? <input type="number" value={editedPrice} onChange={(e) => setEditedPrice(e.target.value)} /> : item.price}</td>
-              <td>{editItemId === item.id ? <input type="text" value={editedMileage} onChange={(e) => setEditedMileage(e.target.value)} /> : item.mileage}</td>
-              <td>{editItemId === item.id ? <input type="text" value={editedColor} onChange={(e) => setEditedColor(e.target.value)} /> : item.color}</td>
-              <td>
-                {editItemId === item.id ? (
-                  <>
-                    <button onClick={handleUpdateData}>Update</button>
-                    <button onClick={() => setEditItemId(null)}>Cancel</button>
-                  </>
-                ) : (
-                  <>
-                    <button onClick={() => handleViewDetails(item.id)}>View Details</button>
-                    <button onClick={() => handleEditData(item.id)}>Edit</button>
-                    <button onClick={() => handleDeleteData(item.id)}>Delete</button>
-                  </>
-                )}
-              </td>
+    <div  style={{ width: "100%",  display: "block", margin: "auto" }}>
+      <h1>Display all car details here</h1>
+      <div style={{ width: "80%",  display: "block", margin: "auto" }}>
+        <table style={{  display: "block", margin: "auto", textAlign: "center", padding: "0% 0%" }}>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Mileage</th>
+              <th>Color</th>
+             
+              <th>Image</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr key={item.id}>
+                <td style={{ padding: "10px" }}>{editItemId === item.id ? <input type="text" value={editedTitle} onChange={(e) => setEditedTitle(e.target.value)} /> : item.title}</td>
+                <td style={{ padding: "10px" }}>{editItemId === item.id ? <input type="number" value={editedPrice} onChange={(e) => setEditedPrice(e.target.value)} /> : item.price}</td>
+                <td style={{ padding: "10px" }}>{editItemId === item.id ? <input type="text" value={editedMileage} onChange={(e) => setEditedMileage(e.target.value)} /> : item.mileage}</td>
+                <td style={{ padding: "20px" }}>{editItemId === item.id ? <input type="text" value={editedColor} onChange={(e) => setEditedColor(e.target.value)} /> : item.color}</td>
+                <td style={{ padding: "10px" }}>
+                  {editItemId === item.id ? (
+                    <input type="text" value={editedImage} onChange={(e) => setEditedImage(e.target.value)} />
+                  ) : (
+                    <img src={item.image} alt={item.title} style={{ width: "100px", height: "auto" }} />
+                  )}
+                </td>
+                <td style={{ padding: "20px" }}>
+                  {editItemId === item.id ? (
+                    <div>
+                      <button onClick={handleUpdateData}>Update</button>
+                      <button onClick={() => setEditItemId(null)}>Cancel</button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button onClick={() => handleViewDetails(item.id)}>View Details</button>
+                      <button onClick={() => handleEditData(item.id)}>Edit</button>
+                      <button onClick={() => handleDeleteData(item.id)}>Delete</button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

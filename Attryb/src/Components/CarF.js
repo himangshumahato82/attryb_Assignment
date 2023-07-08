@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import DisplayData from './Display';
+
+import "./car.css"
 
 function CarF(props) {
   const [title, setTitle] = useState('');
@@ -7,12 +8,15 @@ function CarF(props) {
   const [mileage, setMileage] = useState('');
   const [color, setColor] = useState('');
   const [image, setImage] = useState('');
- 
   const [bulletPoints, setBulletPoints] = useState(['', '', '', '', '']);
- 
 
   const handleClick = (e) => {
     e.preventDefault();
+
+    if (!title || !price || !mileage || !color || !image || bulletPoints.some(point => !point)) {
+      alert('Please fill in all required fields.');
+      return;
+    }
 
     const obj = {
       title: title,
@@ -20,7 +24,7 @@ function CarF(props) {
       mileage: mileage,
       color: color,
       image: image,
-      bulletPoints:bulletPoints
+      bulletPoints: bulletPoints
     };
 
     fetch("http://localhost:3002/data", {
@@ -42,16 +46,13 @@ function CarF(props) {
     setBulletPoints(newBulletPoints);
   };
 
-  
-
-  
-
   return (
-    <div>
+    <div className='container'>
+      <h1>Enter Car Details</h1>
       <form onSubmit={handleClick}>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" />
-        <input type="number" value={mileage} onChange={(e) => setMileage(e.target.value)} placeholder="Mileage" />
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required />
+        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
+        <input type="number" value={mileage} onChange={(e) => setMileage(e.target.value)} placeholder="Mileage" required />
 
         <div>
           <label>Bullet Points:</label>
@@ -62,23 +63,17 @@ function CarF(props) {
                 value={bulletPoint}
                 onChange={(e) => handleBulletPointChange(index, e)}
                 placeholder={`Bullet Point ${index + 1}`}
+                required
               />
             </div>
           ))}
         </div>
 
-        
-
-        <input type="text" value={color} onChange={(e) => setColor(e.target.value)} placeholder="Color" />
-
-        
-
-        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Image URL" />
+        <input type="text" value={color} onChange={(e) => setColor(e.target.value)} placeholder="Color" required />
+        <input type="text" value={image} onChange={(e) => setImage(e.target.value)} placeholder="Image URL" required />
 
         <button type="submit">Submit</button>
       </form>
-
-      <DisplayData />
     </div>
   );
 }
