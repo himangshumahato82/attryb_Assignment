@@ -1,0 +1,35 @@
+{
+  "data": [
+    
+    {
+      "title": "yyy",
+      "price": "666",
+      "mileage": "77",
+      "color": "6",
+      "image": "6",
+      "bulletPoints": [
+        "666",
+        "666",
+        "666",
+        "6",
+        "6"
+      ],
+      "id": 1
+    },
+    {
+      "title": "jhgjhg",
+      "price": "6666",
+      "mileage": "9999",
+      "color": "j",
+      "image": "j",
+      "bulletPoints": [
+        "jj",
+        "j",
+        "j",
+        "j",
+        "j"
+      ],
+      "id": 2
+    }
+  ]
+}

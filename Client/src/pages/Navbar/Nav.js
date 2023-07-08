@@ -41,7 +41,7 @@ function Nav(props) {
             </h1>
             
             </Link>
-            <Link to={"/cardetails"} style={{textDecoration:"none"}} onClick={Question}>
+            <Link to={"/cardetails"} style={{textDecoration:"none"}} >
             <h1 style={{marginTop:"20px"}}>
               Car Details
             </h1>
