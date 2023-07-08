@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Register from "./pages/Register-User";
 import Nav from "./pages/Navbar/Nav";
-import Home from "./pages/Home";
+
 import Login from "./pages/Login-User";
 
 import CarF from "./pages/CarF";

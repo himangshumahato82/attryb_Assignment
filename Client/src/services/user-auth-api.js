@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/api/v1";
+const URL = "https://attrybbackend-production.up.railway.app/api/v1";
 const USER_AUTH = async (token) => {
   console.log(token);
   const config = {
