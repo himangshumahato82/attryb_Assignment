@@ -95,7 +95,7 @@ function DisplayData() {
     const selectedItem = data.find((item) => item.id === viewItemId);
 
     return (
-      <div style={{border:"2px solid teal",margin:"auto",display:"block",width:"40%",height:"auto",}}>
+      <div style={{margin:"auto",display:"block",width:"40%",height:"auto", boxShadow:"rgba(149, 157, 165, 0.2) 0px 8px 24px"}}>
         <h1>Car Details</h1>
         <p>Title: {selectedItem.title}</p>
         <p>Price: {selectedItem.price}</p>

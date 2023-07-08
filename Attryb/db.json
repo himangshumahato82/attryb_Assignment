@@ -1,21 +1,6 @@
 {
   "data": [
     {
-      "title": "honda",
-      "price": "46000",
-      "mileage": "200",
-      "color": "66",
-      "image": "hhh",
-      "bulletPoints": [
-        "tt",
-        "ff",
-        "hh",
-        "jj",
-        "kk"
-      ],
-      "id": 2
-    },
-    {
       "title": "car",
       "price": "2345668",
       "mileage": "456",
